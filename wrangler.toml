@@ -3,6 +3,11 @@ main = "src/index.ts"
 compatibility_date = "2024-12-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Custom domain
+routes = [
+  { pattern = "push.oss.aptov.com", custom_domain = true }
+]
+
 # KV Namespace Bindings
 # Create with: wrangler kv namespace create DEVICE_TOKENS
 # Create with: wrangler kv namespace create AUTH_TOKENS
@@ -20,7 +25,7 @@ crons = ["*/45 * * * *"]
 
 # Non-secret variables
 [vars]
-APNS_BUNDLE_ID = "com.aptove.app"
+APNS_BUNDLE_ID = "com.aptove.ios"
 APNS_SANDBOX = "false"
 FCM_PROJECT_ID = ""
 
