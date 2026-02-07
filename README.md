@@ -115,7 +115,20 @@ npm run deploy
 # or: wrangler deploy
 ```
 
-### 6. Local development
+### 6. CI/CD (GitHub Actions)
+
+Pushing to `main` automatically runs tests and deploys to Cloudflare Workers.
+
+**Required GitHub Secrets** (Settings → Secrets and variables → Actions):
+
+| Secret | Description | How to get it |
+|--------|-------------|---------------|
+| `CLOUDFLARE_API_TOKEN` | Scoped API token for Workers | Cloudflare Dashboard → My Profile → API Tokens → Create Token → use **"Edit Cloudflare Workers"** template. Scope to your account and `aptov.com` zone only. |
+| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account identifier | Cloudflare Dashboard → any domain → right sidebar under **Account ID** (32-char hex). |
+
+> **Security note:** Use the "Edit Cloudflare Workers" token template — it grants only Workers write + Account read permissions. Restrict the token to your specific account and zone so a leaked token cannot affect other resources.
+
+### 7. Local development
 ```bash
 # Create .dev.vars for local secrets
 cat > .dev.vars << 'EOF'
