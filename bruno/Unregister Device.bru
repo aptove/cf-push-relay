@@ -1,0 +1,30 @@
+meta {
+  name: Unregister Device
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{base_url}}/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "relay_token": "{{relay_token}}",
+    "device_token": "{{device_token_ios}}"
+  }
+}
+
+docs {
+  Unregister a device from push notifications.
+  
+  Required fields:
+  - relay_token: Bridge auth_token
+  - device_token: The device token to remove (iOS or Android)
+  
+  Response:
+  - ok: true
+  - message: "Device unregistered"
+}

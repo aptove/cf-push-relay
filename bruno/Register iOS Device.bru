@@ -1,0 +1,34 @@
+meta {
+  name: Register iOS Device
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "relay_token": "{{relay_token}}",
+    "device_token": "{{device_token_ios}}",
+    "platform": "ios",
+    "bundle_id": "com.aptove.ios"
+  }
+}
+
+docs {
+  Register an iOS device for push notifications.
+  
+  Required fields:
+  - relay_token: Bridge auth_token (≥32 chars)
+  - device_token: APNs device token
+  - platform: "ios"
+  - bundle_id: iOS app bundle identifier (optional)
+  
+  Response:
+  - ok: true
+  - message: "Device registered"
+}

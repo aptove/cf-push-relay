@@ -1,0 +1,34 @@
+meta {
+  name: Send Push Notification
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{base_url}}/push
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "relay_token": "{{relay_token}}",
+    "title": "New Tool Request",
+    "body": "Agent wants to execute a tool"
+  }
+}
+
+docs {
+  Send a push notification to all devices registered under a relay token.
+  
+  Required fields:
+  - relay_token: Bridge auth_token
+  - title: Notification title
+  - body: Notification message body
+  
+  Response:
+  - ok: true
+  - results: Array of delivery results per device
+    - platform: "ios" | "android"
+    - status: "sent" | "failed"
+}

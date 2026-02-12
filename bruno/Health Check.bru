@@ -1,0 +1,19 @@
+meta {
+  name: Health Check
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/health
+  body: none
+  auth: none
+}
+
+docs {
+  Health check endpoint to verify the relay is running.
+  
+  Returns:
+  - ok: true
+  - status: "healthy"
+}

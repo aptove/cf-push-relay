@@ -5,7 +5,7 @@ compatibility_flags = ["nodejs_compat"]
 
 # Custom domain
 routes = [
-  { pattern = "push.oss.aptov.com", custom_domain = true }
+  { pattern = "push.aptove.com", custom_domain = true }
 ]
 
 # KV Namespace Bindings
@@ -13,11 +13,11 @@ routes = [
 # Create with: wrangler kv namespace create AUTH_TOKENS
 [[kv_namespaces]]
 binding = "DEVICE_TOKENS"
-id = "0000000000000000000000000000000a" # Replace after: wrangler kv namespace create DEVICE_TOKENS
+id = "2c1442e550f04735a2b6611331d32939" # Replace after: wrangler kv namespace create DEVICE_TOKENS
 
 [[kv_namespaces]]
 binding = "AUTH_TOKENS"
-id = "0000000000000000000000000000000b" # Replace after: wrangler kv namespace create AUTH_TOKENS
+id = "5a4bf96432b5444a96ec478a465aba62" # Replace after: wrangler kv namespace create AUTH_TOKENS
 
 # Cron Trigger: refresh APNs JWT + FCM OAuth2 token every 45 minutes
 [triggers]
@@ -26,7 +26,7 @@ crons = ["*/45 * * * *"]
 # Non-secret variables
 [vars]
 APNS_BUNDLE_ID = "com.aptove.ios"
-APNS_SANDBOX = "false"
+APNS_SANDBOX = "true"  # Use "true" for debug builds, "false" for production/TestFlight
 FCM_PROJECT_ID = ""
 
 # Secrets (set via `wrangler secret put <NAME>`):

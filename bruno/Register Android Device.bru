@@ -1,0 +1,34 @@
+meta {
+  name: Register Android Device
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "relay_token": "{{relay_token}}",
+    "device_token": "{{device_token_android}}",
+    "platform": "android",
+    "bundle_id": "com.aptove.android"
+  }
+}
+
+docs {
+  Register an Android device for push notifications.
+  
+  Required fields:
+  - relay_token: Bridge auth_token (≥32 chars)
+  - device_token: FCM device token
+  - platform: "android"
+  - bundle_id: Android package name (optional)
+  
+  Response:
+  - ok: true
+  - message: "Device registered"
+}
